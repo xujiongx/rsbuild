@@ -9,12 +9,12 @@ nav {
 }
 
 body[data-theme='dark'] nav {
-  background: rgba(16, 23, 37, 0.8);
+  background: rgba(16, 23, 37, 0.9);
   backdrop-filter: blur(10px);
 }
 
 body[data-theme='light'] nav {
-  background: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.9);
   backdrop-filter: blur(10px);
 }
 
@@ -23,40 +23,179 @@ body[data-theme='light'] nav {
   justify-content: space-between;
   align-items: center;
   height: 60px;
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-nav ul {
+.nav-logo {
+  font-weight: 700;
+  font-size: 1.2rem;
+  
+  a {
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+  
+  body[data-theme='dark'] & a {
+    color: #61dafb;
+    text-shadow: 0 0 10px rgba(97, 218, 251, 0.3);
+  }
+  
+  body[data-theme='light'] & a {
+    color: #0070f3;
+    text-shadow: 0 0 10px rgba(0, 112, 243, 0.2);
+  }
+}
+
+.nav-links {
   display: flex;
   list-style: none;
   gap: 2rem;
   margin: 0;
   padding: 0;
+  transition: all 0.3s ease;
 }
 
-nav a {
+.nav-links a {
   text-decoration: none;
   font-weight: 500;
   padding: 0.5rem 1rem;
   border-radius: 4px;
   transition: all 0.3s ease;
+  position: relative;
 }
 
-body[data-theme='dark'] nav a {
+body[data-theme='dark'] .nav-links a {
   color: white;
 }
 
-body[data-theme='light'] nav a {
+body[data-theme='light'] .nav-links a {
   color: #333;
 }
 
-nav a:hover {
+.nav-links a:hover {
   transform: translateY(-2px);
 }
 
-body[data-theme='dark'] nav a:hover {
-  background: rgba(255, 255, 255, 0.1);
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
 }
 
-body[data-theme='light'] nav a:hover {
-  background: rgba(0, 0, 0, 0.05);
+body[data-theme='dark'] .nav-links a::after {
+  background: #61dafb;
+}
+
+body[data-theme='light'] .nav-links a::after {
+  background: #0070f3;
+}
+
+.nav-links a:hover::after {
+  width: 70%;
+}
+
+.theme-toggle-container {
+  display: flex;
+  align-items: center;
+}
+
+/* 移动菜单按钮 */
+.mobile-menu-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 21px;
+  cursor: pointer;
+  z-index: 10;
+  
+  span {
+    display: block;
+    height: 3px;
+    width: 100%;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    
+    body[data-theme='dark'] & {
+      background-color: white;
+    }
+    
+    body[data-theme='light'] & {
+      background-color: #333;
+    }
+  }
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .nav-container {
+    padding: 0 1rem;
+  }
+  
+  .mobile-menu-toggle {
+    display: flex;
+  }
+  
+  .nav-links {
+    position: fixed;
+    top: 60px;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    gap: 0;
+    height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: all 0.3s ease;
+    
+    body[data-theme='dark'] & {
+      background: rgba(16, 23, 37, 0.95);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    }
+    
+    body[data-theme='light'] & {
+      background: rgba(255, 255, 255, 0.95);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+    
+    &.active {
+      height: auto;
+      opacity: 1;
+      padding: 1rem 0;
+    }
+    
+    li {
+      width: 100%;
+      text-align: center;
+    }
+    
+    a {
+      display: block;
+      padding: 1rem;
+      width: 100%;
+      border-radius: 0;
+    }
+    
+    a::after {
+      display: none;
+    }
+  }
+}
+
+/* 适配更小的屏幕 */
+@media (max-width: 480px) {
+  nav {
+    padding: 0 0.5rem;
+  }
+  
+  .nav-logo {
+    font-size: 1rem;
+  }
 }

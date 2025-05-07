@@ -4,6 +4,7 @@ import NotFound from '../pages/NotFound';
 import Home from '../pages/Home';
 import About from '../pages/About';
 import Profile from '../pages/Profile/Profile';
+import Document from '../pages/Document';
 
 // 文件路由映射
 const fileRoutes = [
@@ -18,6 +19,10 @@ const fileRoutes = [
   {
     path: '/profile',
     component: Profile,
+  },
+  {
+    path: '/document',
+    component: Document,
   },
   {
     path: '*',
