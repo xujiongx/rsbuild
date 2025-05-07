@@ -1,0 +1,62 @@
+/* 导航栏样式 */
+nav {
+  padding: 0 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+body[data-theme='dark'] nav {
+  background: rgba(16, 23, 37, 0.8);
+  backdrop-filter: blur(10px);
+}
+
+body[data-theme='light'] nav {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 60px;
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+  margin: 0;
+  padding: 0;
+}
+
+nav a {
+  text-decoration: none;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+body[data-theme='dark'] nav a {
+  color: white;
+}
+
+body[data-theme='light'] nav a {
+  color: #333;
+}
+
+nav a:hover {
+  transform: translateY(-2px);
+}
+
+body[data-theme='dark'] nav a:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+body[data-theme='light'] nav a:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
