@@ -1,0 +1,102 @@
+.about-page {
+  text-align: left;
+  
+  .subtitle {
+    font-size: 1.2rem;
+    margin-bottom: 3rem;
+    text-align: center;
+  }
+  
+  .about-section {
+    margin-bottom: 3rem;
+    
+    h2 {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    body[data-theme='light'] & h2 {
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    }
+  }
+  
+  .tech-stack {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+  }
+  
+  .tech-item {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 1.5rem;
+    border-radius: 8px;
+    
+    h3 {
+      margin-top: 0;
+      color: #61dafb;
+    }
+    
+    body[data-theme='light'] & {
+      background: rgba(0, 0, 0, 0.03);
+      
+      h3 {
+        color: #0070f3;
+      }
+    }
+  }
+  
+  .feature-list {
+    list-style-type: none;
+    padding-left: 0;
+    
+    li {
+      margin-bottom: 1rem;
+      padding-left: 1.5rem;
+      position: relative;
+      
+      &:before {
+        content: "→";
+        position: absolute;
+        left: 0;
+        color: #61dafb;
+      }
+      
+      body[data-theme='light'] &:before {
+        color: #0070f3;
+      }
+    }
+  }
+  
+  .feature-highlight {
+    font-weight: 600;
+    color: #61dafb;
+    
+    body[data-theme='light'] & {
+      color: #0070f3;
+    }
+  }
+  
+  .contact-info {
+    margin-top: 1.5rem;
+  }
+  
+  .contact-item {
+    margin-bottom: 0.5rem;
+  }
+  
+  .contact-label {
+    font-weight: 600;
+    margin-right: 0.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .about-page {
+    .tech-stack {
+      grid-template-columns: 1fr;
+    }
+  }
+}

@@ -1,4 +1,4 @@
-import { Route } from '@tanstack/react-router';
+import { createRoute } from '@tanstack/react-router';
 import { rootRoute } from './rootRoute';
 import NotFound from '../pages/NotFound';
 import Home from '../pages/Home';
@@ -28,7 +28,7 @@ const fileRoutes = [
 // 生成路由配置
 export const generateFileRoutes = () => {
   return fileRoutes.map(({ path, component }) => {
-    return new Route({
+    return createRoute({
       getParentRoute: () => rootRoute,
       path,
       component,
