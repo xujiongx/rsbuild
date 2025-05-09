@@ -9,15 +9,29 @@ html, body {
 }
 
 body {
+  margin: 0;
+  font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+  transition: all 0.3s ease;
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+  perspective: 1000px;
+  transform-style: preserve-3d;
 }
 
-#root {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
+/* 深色主题（默认） */
+body[data-theme='dark'] {
+  color: #fff;
+  background: #020917;
+}
+
+/* 浅色主题 */
+body[data-theme='light'] {
+  color: #333;
+  background: #f5f7fa;
+}
+
+.content {
+  transform-style: preserve-3d;
+  perspective: 1000px;
 }
 
 /* 动画效果 */
@@ -32,30 +46,14 @@ body {
   }
 }
 
-@keyframes slideInRight {
-  from {
-    opacity: 0;
-    transform: translateX(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-/* 通用容器 */
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 2rem;
-  width: 100%;
-  box-sizing: border-box;
-}
-
 /* 响应式设计 */
 @media (max-width: 768px) {
-  .container {
-    padding: 0 1rem;
+  .content h1 {
+    font-size: 2.5rem;
+  }
+  
+  .content p {
+    font-size: 1rem;
   }
 }
 

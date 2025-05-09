@@ -1,4 +1,7 @@
 .home-page {
+  position: relative;
+  z-index: 1;
+  
   .subtitle {
     font-size: 1.2rem;
     margin-bottom: 3rem;
@@ -12,14 +15,21 @@
   }
   
   .feature-card {
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
     border-radius: 8px;
     padding: 1.5rem;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    
+    body[data-theme='light'] & {
+      background: rgba(255, 255, 255, 0.7);
+      border: 1px solid rgba(0, 0, 0, 0.1);
+    }
     
     &:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      transform: translateY(-5px) translateZ(20px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
     }
   }
   
@@ -36,8 +46,15 @@
   .cta-section {
     margin-top: 4rem;
     padding: 2rem;
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
     border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    
+    body[data-theme='light'] & {
+      background: rgba(255, 255, 255, 0.7);
+      border: 1px solid rgba(0, 0, 0, 0.1);
+    }
   }
   
   .cta-buttons {
@@ -59,50 +76,40 @@
       color: white;
       
       &:hover {
-        transform: translateY(-2px);
+        transform: translateY(-2px) scale(1.05);
         box-shadow: 0 5px 15px rgba(97, 218, 251, 0.4);
       }
     }
     
     &.secondary {
-      background: rgba(255, 255, 255, 0.1);
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(5px);
       color: white;
       
-      &:hover {
-        background: rgba(255, 255, 255, 0.2);
-        transform: translateY(-2px);
-      }
-    }
-  }
-  
-  body[data-theme='light'] {
-    .feature-card {
-      background: rgba(0, 0, 0, 0.03);
-    }
-    
-    .cta-section {
-      background: rgba(0, 0, 0, 0.03);
-    }
-    
-    .cta-button {
-      &.primary {
-        color: white;
-      }
-      
-      &.secondary {
+      body[data-theme='light'] & {
         background: rgba(0, 0, 0, 0.1);
         color: #333;
+      }
+      
+      &:hover {
+        background: rgba(255, 255, 255, 0.3);
+        transform: translateY(-2px) scale(1.05);
         
-        &:hover {
+        body[data-theme='light'] & {
           background: rgba(0, 0, 0, 0.15);
         }
       }
     }
   }
-}
-
-@media (max-width: 768px) {
-  .home-page {
+  
+  /* 3D效果 */
+  h1, h2, h3 {
+    transform: translateZ(10px);
+    perspective: 1000px;
+  }
+  
+  /* 响应式设计 */
+  @media (max-width: 768px) {
     .features-grid {
       grid-template-columns: 1fr;
     }

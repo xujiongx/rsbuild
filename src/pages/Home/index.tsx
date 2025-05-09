@@ -1,10 +1,13 @@
 import React from 'react';
 import { Link } from '@tanstack/react-router';
+import ParticleBackground from '../../components/ParticleBackground/ParticleBackground';
 import './index.less';
 
 export default function Home() {
   return (
     <div className="page home-page">
+      <ParticleBackground />
+      
       <h1>欢迎来到我的个人网站</h1>
       <p className="subtitle">基于 Rsbuild 和 TanStack Router 构建的现代化 React 应用</p>
       
